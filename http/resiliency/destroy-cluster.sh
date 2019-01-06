@@ -7,11 +7,6 @@ echo $DIR
 testplan_props=${DIR}/testplan-props.properties
 infra_props=${DIR}/infrastructure.properties
 
-#delete database
-db_identifier=`cat ${infra_props} | grep -w DatabaseName ${infra_props} | cut -d'=' -f2`
-aws rds delete-db-instance --db-instance-identifier "$db_identifier" --skip-final-snapshot
-echo "rds deletion triggered"
-
 delete_cluster=`cat ${testplan_props} | grep -w DeleteCluster ${testplan_props} | cut -d'=' -f2`
 if [ "$delete_cluster" == "TRUE" ];then
 	#delete cluster resources

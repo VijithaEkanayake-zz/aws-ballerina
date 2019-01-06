@@ -50,6 +50,7 @@ if [ ! -f "$config_file" ];then
 fi
 
 infra_properties=$output_dir/infrastructure.properties
+testplan_properties=$output_dir/testplan-props.properties
 
 # echo $kube_master
 # echo $output_dir
