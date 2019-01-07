@@ -3,7 +3,7 @@
 output_dir=$2
 echo $output_dir
 
-cluster_name="ballerina-http-cluster"
+cluster_name="ballerina-http-scenario3-try2-cluster"
 retry_attempts=3
 config_file=~/.kube/config
 echo $retry_attempts
@@ -49,10 +49,20 @@ if [ ! -f "$config_file" ];then
     eksctl utils write-kubeconfig --name $cluster_name --region us-east-1
 fi
 
+whoami
+echo $HOME
+
+echo "current context"
+kubectl config current-context
+echo "all available contexts"
+kubectl config get-contexts
+echo "view kubectl configurations"
+kubectl config view
+
 infra_properties=$output_dir/infrastructure.properties
 testplan_properties=$output_dir/testplan-props.properties
 
-# echo $kube_master
-# echo $output_dir
-# echo "KUBERNETES_MASTER=$kube_master" > $output_dir/k8s.properties
+echo $kube_master
+echo $output_dir
+echo "KUBERNETES_MASTER=$kube_master" > $output_dir/k8s.properties
 echo "ClusterName=$cluster_name" >> $output_dir/infrastructure.properties
