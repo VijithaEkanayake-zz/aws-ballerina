@@ -1,9 +1,9 @@
 #!bin/bash
 
-output_dir=$2
-echo $output_dir
+OUTPUT_DIR=$2
+echo $OUTPUT_DIR
 
-cluster_name="ballerina-http-scenario3-try2-cluster"
+cluster_name="ballerina-http-scenario2-try1-cluster"
 retry_attempts=3
 config_file=~/.kube/config
 echo $retry_attempts
@@ -59,10 +59,10 @@ kubectl config get-contexts
 echo "view kubectl configurations"
 kubectl config view
 
-infra_properties=$output_dir/infrastructure.properties
-testplan_properties=$output_dir/testplan-props.properties
+infra_properties=$OUTPUT_DIR/infrastructure.properties
+testplan_properties=$OUTPUT_DIR/testplan-props.properties
 
 echo $kube_master
-echo $output_dir
-echo "KUBERNETES_MASTER=$kube_master" > $output_dir/k8s.properties
-echo "ClusterName=$cluster_name" >> $output_dir/infrastructure.properties
+echo $OUTPUT_DIR
+echo "KUBERNETES_MASTER=$kube_master" > $OUTPUT_DIR/k8s.properties
+echo "ClusterName=$cluster_name" >> $OUTPUT_DIR/infrastructure.properties
